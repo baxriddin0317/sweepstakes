@@ -106,9 +106,9 @@ export default function Home() {
                       className="text-white font-extrabold
                                 italic
                                 pt-6 pl-8 numbered">
-                      <li className="mb-1 text-2xl">Okay Bear</li>
-                      <li className="mb-1 text-2xl">TFF</li>
-                      <li className="mb-1 text-2xl">The Heist</li>
+                      <li className="mb-1 text-xl md:text-2xl">Okay Bear</li>
+                      <li className="mb-1 text-xl md:text-2xl">TFF</li>
+                      <li className="mb-1 text-xl md:text-2xl">The Heist</li>
                     </ul>
                   </div>
                 </div>
