@@ -2,26 +2,401 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary: theme('colors.solape-theme.orange.DEFAULT');
+  --red: theme('colors.solape-theme.red.DEFAULT');
+  --red-dark: theme('colors.solape-theme.red.dark');
+  --red-muted: theme('colors.solape-theme.red.muted');
+  --red-bright: theme('colors.solape-theme.red.bright');
+  --green: theme('colors.solape-theme.green.DEFAULT');
+  --green-dark: theme('colors.solape-theme.green.dark');
+  --green-muted: theme('colors.solape-theme.green.muted');
+  --orange: theme('colors.solape-theme.orange.DEFAULT');
+  --bkg-1: theme('colors.solape-theme.bkg-1');
+  --bkg-2: theme('colors.solape-theme.bkg-2');
+  --bkg-3: theme('colors.solape-theme.bkg-3');
+  --bkg-4: theme('colors.solape-theme.bkg-4');
+  --fgd-1: theme('colors.solape-theme.fgd-1');
+  --fgd-2: theme('colors.solape-theme.fgd-2');
+  --fgd-3: theme('colors.solape-theme.fgd-3');
+  --fgd-4: theme('colors.solape-theme.fgd-4');
+  --fgd-5: theme('colors.solape-theme.fgd-5');
+  --bkg-button: theme('colors.solape-theme.bkg-button');
+  --bkg-button-2: theme('colors.solape-theme.bkg-button-2');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Base */
+
+body {
+  @apply font-body text-sm tracking-wider ;
+  background-color: var(--bkg-1);
+}
+
+h1 {
+  @apply text-xl font-bold text-th-fgd-1 md:text-2xl;
+}
+
+h2 {
+  @apply text-lg font-bold text-th-fgd-1;
+}
+
+h3 {
+  @apply text-base font-bold text-th-fgd-1;
+}
+
+h4 {
+  @apply text-sm font-bold text-th-fgd-3;
+}
+
+p {
+  @apply mb-2 text-sm text-th-fgd-3;
+}
+
+a {
+  @apply text-th-primary md:hover:text-th-primary-dark;
+}
+
+li {
+  @apply mb-2.5 text-sm text-th-fgd-3 last:mb-0;
+}
+
+tbody {
+  @apply border-t border-th-bkg-3;
+}
+
+button {
+  transition: all 0.3s ease;
+  @apply rounded-md tracking-wider md:hover:brightness-[1.1] md:disabled:hover:brightness-100;
+}
+
+.transition-none {
+  transition: none;
+}
+
+.default-transition {
+  @apply transition-all duration-200;
+}
+
+.tiny-text {
+  font-size: 0.65rem;
+  line-height: 1.5;
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+.solape__connect-btn {
+  background: transparent;
+  border: 2px solid #ff810a;
+  color: hsla(0, 0%, 100%, .85);
+  font-size: 16px;
+}
+
+.solape__connect-btn:hover {
+  color: #ff810a;
+}
+
+.solape__connect-btn span {
+  line-height: 23px;
+  font-weight: 300;
+}
+
+.solape__wallet-select-btn {
+  background: transparent;
+  border: 2px solid #ff810a;
+  color: #fff;
+  border-left: none;
+  margin: 0em;
+  margin-left: -1px;
+}
+
+#connect-wallet-tip {
+  height: auto;
+}
+
+#connect-wallet-tip button {
+  padding: 5px 0;
+}
+
+.solape-swap-stats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.solape-swap-stats h3 {
+  font-size: 22;
+  font-weight: 400;
+  color: #676767;
+  margin-top: 32px;
+  margin-bottom: 0.75em;
+}
+
+.chart-stats {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.chart-interval-link.active {
+  background: #FF810A;
+  color: #fff;
+}
+
+.chart-interval-link {
+  color: #676767;
+  margin: 0 6px;
+  padding: 4px;
+  background: #1C2222;
+  border-radius: 4px;
+}
+
+.solapenav {
+  background: linear-gradient(100.61deg, #090b0b 0%, #1c2222 100%);
+}
+
+.sidenavstyle {
+  position: fixed;
+  height: calc(100% - 0px);
+  background: linear-gradient(100.61deg, #090b0b 0%, #1c2222 100%);
+  padding: 0px;
+  text-align: center;
+}
+
+nav.solape a {
+  color: hsla(0, 0%, 100%, .85);
+  font-weight: normal;
+  font-size: 14px;
+  letter-spacing: normal;
+}
+
+nav.solape a.active {
+  font-size: 16px;
+  color: rgb(255, 230, 204);
+}
+
+.solapecharts {
+
+  font-family:Inter;
+  
+  }
+
+.solape-swap-bg {
+  background: url(/solape_images/solape-swap-background.svg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+ }
+
+ .solapefooter {
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(100.61deg, #090B0B 0%, #1C2222 100%);
+  min-height: 312px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.token-list-item {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.token-list-item:hover {
+  background: var(--primary);
+}
+
+.token-list-item img {
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+}
+
+/* Sweepstakes Page */
+
+.list-style-disc{
+  list-style-type: disc;
+}
+
+.numbered{
+  list-style-type: decimal;
+}
+
+.reward::after,.reward::before{
+  position: absolute;
+  content: "";
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(to bottom right, #FF810A, #FFAB5C);
+  border-radius: 10px;
+  top: calc(50% - 1px);
+}
+.reward::before{
+  left: 0;
+}
+.reward::after{
+  right: 0;
+}
+
+.img-border{
+  border: 4px solid #FF810A;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.shadow-orange{
+  box-shadow: 0 4px 250px #F87C07;
+}
+.link-underline{
+  border-bottom: 2px solid #F87C07;
+}
+
+.particles{
+  background: url('/solape_images/raffleimages/particles-bg.png'), url('/solape_images/raffleimages/emojies-bg.png');
+  background-position: center, center;
+  background-size: cover,cover;
+  border-radius: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.description {
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+.description a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description p {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: var(--border-radius);
+}
+
+.code {
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.card {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+}
+
+.card span {
+  display: inline-block;
+  transition: transform 200ms;
+}
+
+.card h2 {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.card p {
+  margin: 0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 30ch;
+}
+
+/* Inner Square */
+.thirteen::after {
+  inset: 0;
+  padding: 1px;
+  border-radius: var(--border-radius);
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom right,
+    rgba(var(--tile-start-rgb), 1),
+    rgba(var(--tile-end-rgb), 1)
+  );
+  background-clip: content-box;
+}
+
+/* Chart */
+
+.TVChartContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.tradingview-chart {
+  display: contents;
+}
+
+/* Grid */
+
+.react-grid-item.react-grid-placeholder {
+  background: var(--bkg-1);
+  opacity: 100%;
+  border-radius: 8px;
+  transition-duration: 100ms;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.react-resizable-handle {
+  background-image: none;
+  z-index: 100;
+}
+
+.react-grid-item > .react-resizable-handle {
+  width: 24px;
+  height: 24px;
+}
+
+.react-grid-item > .react-resizable-handle::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 3px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
+  border-radius: 1px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
